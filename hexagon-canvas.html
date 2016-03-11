@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hexagon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .hex-container {
+            width: 1000px;
+            height: 600px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+        canvas {
+            width: 120px;
+            height: 120px;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="hex-container">
+        <canvas id="hex" width="120" height="120">
+            The browser doesn't suppoert canvas API
+        </canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById("hex");
+        var context = canvas.getContext("2d");
+        context.strokeStyle = 'rgb(24, 28, 27)';
+        context.moveTo(30, 10);
+        context.lineTo(90, 10);
+        context.lineTo(120, 30 * Math.sqrt(3) + 10);
+        context.lineTo(90, 60 * Math.sqrt(3) + 10);
+        context.lineTo(30, 60 * Math.sqrt(3) + 10);
+        context.lineTo(0, 30 * Math.sqrt(3) + 10);
+        context.lineTo(30, 10);
+        context.stroke();
+
+        var image = new Image();
+        image.onload = function() {
+            var bg = context.createPattern(this, 'no-repeat');
+            context.fillStyle = bg;
+            context.fill();
+        }
+        image.src = '10s.jpg';
+
+
+    </script>
+</body>
+</html>
